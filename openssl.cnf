@@ -1,5 +1,4 @@
 [ ca ]
-# `man ca`
 default_ca = CA_default
 
 [ CA_default ]
@@ -100,7 +99,7 @@ keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 
-# В IP.1 НУЖНО ВСТАВИТЬ IP-АДРЕС
+# В IP.1 НУЖНО ВСТАВИТЬ IP-АДРЕС IWTM
 [alt_names]
 DNS.1 = iwtm
 DNS.2 = iwtm.demo.lab
