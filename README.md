@@ -1,9 +1,6 @@
 # Демонстрационный экзамен F7 СиСА/ОИБАС
 
-За дополнительными файлами и рекомендациями - сюда.
-https://github.com/Fistim/DemoExam
-https://github.com/Fistim/DemoExam
-https://github.com/Fistim/DemoExam
+За дополнительными файлами и рекомендациями - сюда https://github.com/Fistim/DemoExam
 
 # Описание файлов в репозитории
 ## Модуль А
