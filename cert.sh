@@ -17,9 +17,9 @@ echo "xxXX1234" >> /opt/iw/tm5/etc/certification/pass.pass
 
 cp /etc/nginx/conf.d/iwtm.conf /etc/nginx/conf.d/iwtm.conf.bak
 
-openssl x509 -in mycert.crt -out mycert.pem -outform PEM
-mv /ca/server.crt /opt/iw/tm5/etc/certification/web-server.pem
-mv /ca/server.crt /opt/iw/tm5/etc/certification/web-server.key
+openssl x509 -in server.crt -out server.pem -outform PEM
+mv /ca/server.pem /opt/iw/tm5/etc/certification/web-server.pem
+mv /ca/server.key /opt/iw/tm5/etc/certification/web-server.key
 sed -i '/ssl_certificate_key/a ssl_password_file /opt/iw/tm5/etc/certification/pass.pass;' /etc/nginx/conf.d/iwtm.conf
 
 # sed -i 's#ssl_certificate /opt/iw/tm5/etc/certification/web-server.pem;#ssl_certificate /ca/server.crt;#' /etc/nginx/conf.d/iwtm.conf
