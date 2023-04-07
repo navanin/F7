@@ -27,7 +27,6 @@ sed -i '/ssl_certificate_key/a ssl_password_file /opt/iw/tm5/etc/certification/p
 # sed -i 's#ssl_certificate /opt/iw/tm5/etc/certification/web-server.pem;#ssl_certificate /ca/server.crt;#' /etc/nginx/conf.d/iwtm.conf
 # sed -i 's#ssl_certificate_key /opt/iw/tm5/etc/certification/web-server.key;#ssl_certificate_key /ca/server.key;#' /etc/nginx/conf.d/iwtm.conf
 
-#rm -rf ca.* server.*
-
+rm -rf ca.* server.*
 systemctl restart nginx
 echo -e "THE SCRIPT HAS FINISHED ITS WORK. \n\nCOPY bundle.pfx TO 'demo.lab'"
