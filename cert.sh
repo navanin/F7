@@ -8,7 +8,8 @@ EMAIL=support@demo.lab
 pass=xxXX1234
 
 curl -s https://raw.githubusercontent.com/ragevna/F7/main/openssl.cnf >> /ca/openssl.cnf
-sed -i 's/IP.1 = <INSERT IWTM IP>/IP.1 = $(ip addr show ens192 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)/g' /ca/openssl.cnf
+sed -i "s/IP\.1 = <INSERT IWTM IP>/IP.1 = $(ifconfig ens192 | awk '/inet /{print $2}')/g" /ca/openssl.cnf
+
 
 openssl req -x509 -newkey rsa:4096 -keyout ca.key -out ca.crt -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=Demo.lab RootCA/emailAddress=$EMAIL" -days 3650 -extensions v3_ca  -passout pass:"$pass" 2>/dev/null
 openssl req -newkey rsa:4096 -passout pass:"$pass" -config openssl.cnf -keyout server.key -out server.csr -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=iwtm/emailAddress=$EMAIL" 2>/dev/null
