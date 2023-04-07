@@ -8,6 +8,7 @@ EMAIL=support@demo.lab
 pass=xxXX1234
 
 curl -s https://raw.githubusercontent.com/ragevna/F7/main/openssl.cnf >> /ca/openssl.cnf
+sed -i 's/<INSERT IWTM IP>/$(ip addr show ens192 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)/g' /ca/openssl.cnf
 
 openssl req -x509 -newkey rsa:4096 -keyout ca.key -out ca.crt -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=Demo.lab RootCA/emailAddress=$EMAIL" -days 3650 -extensions v3_ca  -passout pass:"$pass" 2>/dev/null
 openssl req -newkey rsa:4096 -passout pass:"$pass" -config openssl.cnf -keyout server.key -out server.csr -subj "/C=$C/ST=$ST/L=$L/O=$O/OU=$OU/CN=iwtm/emailAddress=$EMAIL" 2>/dev/null
@@ -25,6 +26,7 @@ sed -i '/ssl_certificate_key/a ssl_password_file /opt/iw/tm5/etc/certification/p
 # sed -i 's#ssl_certificate /opt/iw/tm5/etc/certification/web-server.pem;#ssl_certificate /ca/server.crt;#' /etc/nginx/conf.d/iwtm.conf
 # sed -i 's#ssl_certificate_key /opt/iw/tm5/etc/certification/web-server.key;#ssl_certificate_key /ca/server.key;#' /etc/nginx/conf.d/iwtm.conf
 
-rm -rf ca.* server.*
+#rm -rf ca.* server.*
+
 systemctl restart nginx
 echo -e "THE SCRIPT HAS FINISHED ITS WORK. \n\nCOPY bundle.pfx TO 'demo.lab'"
