@@ -30,4 +30,4 @@ sed -i '/ssl_certificate_key/a ssl_password_file /opt/iw/tm5/etc/certification/p
 rm -rf ca.* server.*
 systemctl restart nginx
 echo -e "THE SCRIPT HAS FINISHED ITS WORK. \n\nCOPY bundle.pfx TO 'demo.lab'"
-echo -e "!!!НИ В КОЕМ СЛУЧАЕ НЕ ЗАПУСКАТЬ СКРИПТ НЕСКОЛЬКО РАЗ - СЛОМАЕТЕ СЕБЕ ВИРТУАЛКУ!!!"
+echo -e "\n\nNE ZAPUSKAYTE SKRIPT NESKOLKO RAZ -- SLOMAETE VIRTUALKU\n\n"
